@@ -1,6 +1,8 @@
 "use client";
 import React, { useRef, useState, useEffect } from "react";
 import { FlashcardArray } from "react-quizlet-flashcard";
+import Lottie from "lottie-react";
+import checkAnimation from "../../public/lottie-check.json";
 
 const cards = [
   {
@@ -81,15 +83,22 @@ const MyFlashcard = () => {
   };
 
   useEffect(() => {
-    setIsFlip(false);
+    if (!isFlip) {
+      setIsFlip(true);
+    }
     if (currentCard == cards.length) {
       end();
     }
   }, [currentCard]);
 
   if (isEnded) {
-    return <div className=" max-w-screen-sm flex flex-col">yehh</div>;
+    return (
+      <div className=" max-w-screen-sm flex flex-col">
+        <Lottie className="w-60" animationData={checkAnimation} loop={true} />
+      </div>
+    );
   }
+
   return (
     <div className=" max-w-screen-sm flex flex-col">
       <FlashcardArray
