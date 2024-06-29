@@ -5,7 +5,6 @@ import React from "react";
 import { useRouter } from "next/navigation";
 const page = ({ params }) => {
   const nodeName = params.node;
-
   const router = useRouter();
 
   return (

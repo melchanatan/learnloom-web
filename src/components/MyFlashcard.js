@@ -50,6 +50,7 @@ const MyFlashcard = () => {
   const [cardsLength, setCardLength] = useState(cards.length);
   const [isEnded, setIsEnded] = useState(false);
   const currentCardFlipRef = useRef();
+  const [isFlip, setIsFlip] = useState(true);
 
   const appendCardToBack = () => {
     cards.push({
@@ -71,6 +72,7 @@ const MyFlashcard = () => {
   };
 
   const flip = () => {
+    setIsFlip(false);
     currentCardFlipRef.current();
   };
 
@@ -79,11 +81,15 @@ const MyFlashcard = () => {
   };
 
   useEffect(() => {
+    setIsFlip(false);
     if (currentCard == cards.length) {
       end();
     }
   }, [currentCard]);
 
+  if (isEnded) {
+    return <div className=" max-w-screen-sm flex flex-col">yehh</div>;
+  }
   return (
     <div className=" max-w-screen-sm flex flex-col">
       <FlashcardArray
@@ -101,12 +107,29 @@ const MyFlashcard = () => {
         {currentCard} / {cardsLength}
       </p>
       <div className="flex justify-between">
-        <button onClick={retry}>No</button>
-        <button onClick={flip}>flip</button>
-        <button onClick={next}>Yes</button>
+        {isFlip ? (
+          <button onClick={flip} className="button-outline w-full">
+            flip
+          </button>
+        ) : (
+          <VerifyButtonGroup retry={retry} next={next} />
+        )}
       </div>
     </div>
   );
 };
 
+const VerifyButtonGroup = ({ retry, next }) => {
+  return (
+    <div className="flex w-full gap-4 items-stretch justify-center">
+      <button onClick={retry} className="button-outline w-full bg-red-400/30">
+        No
+      </button>
+
+      <button onClick={next} className="button-outline w-full !bg-green-400/30">
+        Yes
+      </button>
+    </div>
+  );
+};
 export default MyFlashcard;

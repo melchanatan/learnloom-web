@@ -26,16 +26,7 @@ const SummaryModal = ({ onClose, isOpen, title }) => {
         </ModalHeader>
         <ModalCloseButton />
         <ModalBody>
-          {isLoading ? (
-            <div className="flex flex-col gap-2">
-              <div className="animate-pulse bg-slate-300 rounded-lg w-full h-4"></div>
-              <div className="animate-pulse bg-slate-300 rounded-lg w-full h-4"></div>
-              <div className="animate-pulse bg-slate-300 rounded-lg w-full h-4"></div>
-              <div className="animate-pulse bg-slate-300 rounded-lg w-[70%] h-4"></div>
-            </div>
-          ) : (
-            "Modal Title"
-          )}
+          {isLoading ? <SkeletonParagraph /> : "Modal Title"}
         </ModalBody>
 
         <ModalFooter>
@@ -48,4 +39,14 @@ const SummaryModal = ({ onClose, isOpen, title }) => {
   );
 };
 
+const SkeletonParagraph = () => {
+  return (
+    <div className="flex flex-col gap-2">
+      <div className="animate-pulse bg-slate-300 rounded-lg w-full h-4"></div>
+      <div className="animate-pulse bg-slate-300 rounded-lg w-full h-4"></div>
+      <div className="animate-pulse bg-slate-300 rounded-lg w-full h-4"></div>
+      <div className="animate-pulse bg-slate-300 rounded-lg w-[70%] h-4"></div>
+    </div>
+  );
+};
 export default SummaryModal;
