@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import Graph from "react-graph-vis";
 import NodeLinkMenu from "@/components/NodeLinkMenu";
+import SummaryModal from "@/components/SummaryModal";
 
 const graph = {
   nodes: [
