@@ -44,9 +44,11 @@ const NodeMap = () => {
   };
 
   return (
-    <div>
+    <div className="flex gap-3">
       <NodeLinkMenu selectedNodeName={selectedNodeName} />
-      <Graph graph={graph} options={options} events={handleEvents} />
+      <div class="rounded-lg border-2">
+        <Graph graph={graph} options={options} events={handleEvents} />
+      </div>
     </div>
   );
 };
