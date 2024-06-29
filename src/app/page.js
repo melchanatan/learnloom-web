@@ -10,11 +10,12 @@ import {
   CardFooter,
 } from "@chakra-ui/react";
 import DragAndDropModal from "@/components/DragAndDropModal";
-
+import NodeMap from "@/components/NodeMap";
 export default function Home() {
   return (
     <div className="relative flex min-h-screen flex-col items-center justify-between p-24 z-10">
-      <DragAndDropModal />
+      {/* <DragAndDropModal /> */}
+      <NodeMap />
     </div>
   );
 }
