@@ -34,7 +34,7 @@ const NodeMap = () => {
   const [selectedNodeName, setSelectedNodeName] = useState("");
 
   const handleSelectNode = (nodeIndex) => {
-    setSelectedNodeName(graph.nodes[nodeIndex - 1].label);
+    setSelectedNodeName(graph?.nodes[nodeIndex - 1].label);
   };
 
   const handleEvents = {

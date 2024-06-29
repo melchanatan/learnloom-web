@@ -18,7 +18,8 @@
     "react": "^18",
     "react-dom": "^18",
     "react-drag-drop-files": "^2.3.10",
-    "react-graph-vis": "^1.0.7"
+    "react-graph-vis": "^1.0.7",
+    "react-quizlet-flashcard": "^3.0.0"
   },
   "devDependencies": {
     "eslint": "^8",
