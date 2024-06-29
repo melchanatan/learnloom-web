@@ -31,3 +31,7 @@ body {
     text-wrap: balance;
   }
 }
+
+main {
+  @apply bg-slate-50;
+}
