@@ -1,8 +1,7 @@
 "use client";
 import React from "react";
-import LinkButton from "@/components/common/LinkButton";
 import { ExternalLinkIcon } from "@chakra-ui/icons";
-import { useDisclosure } from "@chakra-ui/react";
+import { useDisclosure, Button } from "@chakra-ui/react";
 import SummaryModal from "@/components/SummaryModal";
 
 const SummaryLink = () => {
@@ -10,12 +9,9 @@ const SummaryLink = () => {
 
   return (
     <>
-      {/* <Button onClick={onOpen}>Open Modal</Button> */}
-      <LinkButton
-        onClick={onOpen}
-        icon={<ExternalLinkIcon />}
-        title="summary"
-      />
+      <Button leftIcon={<ExternalLinkIcon />} onClick={onOpen}>
+        Summary
+      </Button>
       <SummaryModal onClose={onClose} isOpen={isOpen} />
     </>
   );

@@ -17,7 +17,6 @@ export default function Home() {
     <div className="relative flex min-h-screen flex-col items-center justify-between p-24 z-10">
       {/* <DragAndDropModal /> */}
       <NodeMap />
-      <MyFlashcard />
     </div>
   );
 }
