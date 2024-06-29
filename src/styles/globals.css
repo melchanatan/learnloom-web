@@ -35,3 +35,7 @@ body {
 main {
   @apply bg-slate-50;
 }
+
+.shadow-full {
+  @apply shadow-[0px_0px_10px_2px_rgba(87,87,87,.2)];
+}
