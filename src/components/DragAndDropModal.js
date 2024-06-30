@@ -20,7 +20,6 @@ const DragAndDropModal = ({ isDragOpen, setIsDragOpen }) => {
 
   const handleChange = async (file) => {
     setIsDragOpen(false);
-    setFile(file);
     let data = new FormData();
     data.append("file", file);
 
@@ -31,6 +30,32 @@ const DragAndDropModal = ({ isDragOpen, setIsDragOpen }) => {
     });
 
     const res = await response.json();
+    const nodes = reGenerateNode(res);
+    setFile(nodes);
+  };
+
+  const reGenerateNode = (res) => {
+    let fileGraph = {
+      nodes: [],
+      edges: [],
+    };
+    let i = 0;
+    let b = 0;
+    Object.keys(res).forEach(function (key) {
+      b = i;
+      fileGraph.nodes.push({ id: i, label: key, title: key });
+      i++;
+      for (let j = 0; j < res[key].length; j++) {
+        fileGraph.nodes.push({
+          id: i,
+          label: res[key][j],
+          title: res[key][j],
+        });
+        fileGraph.edges.push({ from: b, to: i });
+        i++;
+      }
+    });
+    return fileGraph;
   };
 
   if (isDragOpen)
