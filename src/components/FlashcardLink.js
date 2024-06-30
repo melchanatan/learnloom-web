@@ -26,7 +26,7 @@ const FlashcardLink = ({ selectedNodeName }) => {
     <Popover>
       <PopoverTrigger>
         <Button leftIcon={<ChatIcon />} onClick={pushToRoute}>
-          Keypoint
+          Flashcard
         </Button>
       </PopoverTrigger>
       {selectedNodeName == "" && (

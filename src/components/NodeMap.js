@@ -375,12 +375,11 @@ const NodeMap = () => {
   useEffect(() => {
     if (file.nodes != [] && file.edges != []) {
       setIsDoneGenerating(true);
-      console.log("done rendering");
     }
   }, [file]);
 
   const handleSelectNode = (nodeIndex) => {
-    setSelectedNodeName(x?.nodes[nodeIndex - 1].label);
+    setSelectedNodeName(graph?.nodes[nodeIndex - 1].label);
   };
 
   const handleEvents = {
@@ -394,17 +393,11 @@ const NodeMap = () => {
       <NodeLinkMenu selectedNodeName={selectedNodeName} />
       {file && (
         <div className="rounded-lg border-2">
-          <MyGraph graph={file} />
+          <Graph graph={graph} options={options} events={handleEvents} />
         </div>
       )}
-
-      {/* <button onClick={reGenerateNode}> render</button> */}
     </div>
   );
-};
-
-const MyGraph = ({ graph }) => {
-  return <Graph graph={graph} options={options} />;
 };
 
 export default NodeMap;
