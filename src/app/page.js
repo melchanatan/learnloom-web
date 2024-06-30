@@ -1,4 +1,5 @@
-import Image from "next/image";
+"use client";
+import React, { useState } from "react";
 import {
   Card,
   CardHeader,
@@ -13,9 +14,10 @@ import DragAndDropModal from "@/components/DragAndDropModal";
 import NodeMap from "@/components/NodeMap";
 import MyFlashcard from "@/components/MyFlashcard";
 export default function Home() {
+  const [isDragOpen, setIsDragOpen] = useState(true);
   return (
     <div className="relative flex min-h-screen flex-col items-center justify-between p-24 z-10">
-      {/* <DragAndDropModal /> */}
+      <DragAndDropModal isDragOpen={isDragOpen} setIsDragOpen={setIsDragOpen} />
       <NodeMap />
     </div>
   );
