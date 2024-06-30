@@ -1,11 +1,11 @@
 "use client";
 import React, { useState } from "react";
 import { FileUploader } from "react-drag-drop-files";
-
+import useFileStore from "@/hook/useFileStore";
 const fileTypes = ["JPG", "PNG", "PDF"];
 
 const DragAndDropModal = () => {
-  const [file, setFile] = useState(null);
+  const { file, setFile } = useFileStore();
 
   const checkFetch = async () => {
     const response = await fetch("http://localhost:8000/ping/", {
@@ -13,13 +13,11 @@ const DragAndDropModal = () => {
       method: "GET",
     });
 
-    console.log(response);
-    console.log(response.body);
-
-    console.log("hel");
     const res = await response.json();
     console.log(res);
+    setFile("hello");
   };
+
   const handleChange = async (file) => {
     setFile(file);
     let data = new FormData();
