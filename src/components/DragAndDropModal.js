@@ -2,12 +2,37 @@
 import React, { useState } from "react";
 import { FileUploader } from "react-drag-drop-files";
 
-const fileTypes = ["JPG", "PNG", "GIF"];
+const fileTypes = ["JPG", "PNG", "PDF"];
 
 const DragAndDropModal = () => {
   const [file, setFile] = useState(null);
-  const handleChange = (file) => {
+
+  const checkFetch = async () => {
+    const response = await fetch("http://localhost:8000/ping/", {
+      // mode: "no-cors",
+      method: "GET",
+    });
+
+    console.log(response);
+    console.log(response.body);
+
+    console.log("hel");
+    const res = await response.json();
+    console.log(res);
+  };
+  const handleChange = async (file) => {
     setFile(file);
+    let data = new FormData();
+    data.append("file", file);
+
+    const response = await fetch("http://localhost:8000/getNode", {
+      method: "POST",
+      header: { "Content-Type": "multipart/form-data" },
+      body: data,
+    });
+
+    const res = await response.json();
+    console.log(res);
   };
 
   return (
@@ -20,6 +45,7 @@ const DragAndDropModal = () => {
           name="file"
           types={fileTypes}
         />
+        <button onClick={checkFetch}> enheosehfiosede</button>
       </div>
       <span className="absolute z-30 top-0 left-0 w-full h-full bg-gray-900/40 backdrop-blur-lg"></span>
     </>
